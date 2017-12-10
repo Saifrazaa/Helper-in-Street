@@ -23,14 +23,19 @@ router.post('/signup',function(req,res){
 var errors = req.validationErrors();
      if(errors)
      {
-    res.redirect();
-
+		//You need to re-render template with error variables
+		res.render('registeration',{
+            errors : errors
+        });
+        console.log('Error');
     }
      else
      {
      	return redirect("/");
      }
 
+},function(req,res){
+	console.log("Process registration");
 });
 
 module.exports = router;

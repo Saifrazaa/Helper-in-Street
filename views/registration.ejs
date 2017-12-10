@@ -64,7 +64,13 @@
 	<![endif]-->
 	</head>
 	<body>
-
+	<% if(errors){ %> 
+        <ul>
+        <% errors.forEach(function( err){ %>
+            <li> <%= err.msg %> </li>
+        <% }) %>
+        </ul>
+    <%}%>
 	<div id="fh5co-page">
 
 		<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
