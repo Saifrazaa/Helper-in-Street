@@ -5,10 +5,10 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var expressValidator=require("express-validator");
-var expressSession=require("express-sessions");
+var expressSession=require("express-session");
 var index = require('./routes/index');
 var users = require('./routes/users');
-
+var ejs=require("ejs");
 var app = express();
 
 // view engine setup
@@ -22,7 +22,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(expressValidator());
 app.use(cookieParser());
-//app.use(expressSession({secret:"cat"}));
+app.use(expressSession({secret:"cat"}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);

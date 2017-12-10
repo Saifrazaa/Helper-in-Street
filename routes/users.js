@@ -1,10 +1,12 @@
 var express = require('express');
 var router = express.Router();
-
+var expressValidator=require("express-validator");
+router.use(expressValidator());
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
+
 router.post('/signup',function(req,res){
  var username=req.body.username;
  var email=req.body.email;
@@ -18,11 +20,12 @@ router.post('/signup',function(req,res){
      req.check("address","address should not be empty").notEmpty();
      req.check("country","country should not be empty").notEmpty();
      req.check("contact","contact should not be empty").notEmpty();
-     var errors=req.ValidationErrors();
+var errors = req.validationErrors();
      if(errors)
      {
-     	res.render("registration",{errors:errors})
-     }
+    res.redirect();
+
+    }
      else
      {
      	return redirect("/");
