@@ -20,7 +20,7 @@ router.post('/signup',function(req,res){
      req.check("address","address should not be empty").notEmpty();
      req.check("country","country should not be empty").notEmpty();
      req.check("contact","contact should not be empty").notEmpty();
-var errors = req.validationErrors();
+     var errors = req.validationErrors();
      if(errors)
      {
 		//You need to re-render template with error variables
@@ -29,12 +29,10 @@ var errors = req.validationErrors();
         });
         console.log('Error');
     }
-     else
-     {
-     	return redirect("/");
-     }
+     
 
 },function(req,res){
+	//store values into db
 	console.log("Process registration");
 });
 
