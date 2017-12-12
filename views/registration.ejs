@@ -1,76 +1,54 @@
 
-<!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-	<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title><% title %></title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Free HTML5 Website Template by FreeHTML5.co" />
-	<meta name="keywords" content="free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
-	<meta name="author" content="FreeHTML5.co" />
+<% //if(errors){ %>
+			<ul>
+			<% //errors.forEach(function( err){ %>
+					<li> <%=// err.msg %> </li>
+			<% //}) %>
+			</ul>
+	<% //}%>
+	
+<style>
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700);
+@import url(http://fonts.googleapis.com/css?family=Roboto+Condensed:400,300,700);
 
-  <!--
-	//////////////////////////////////////////////////////
+body {
+    background: #fff;
+	font-family: 'Roboto', sans-serif;
+	color:#333;
+	line-height: 22px;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Roboto Condensed', sans-serif;
+	font-weight: 400;
+	color:#111;
+	margin-top:5px;
+	margin-bottom:5px;
+}
+h1, h2, h3 {
+	text-transform:uppercase;
+}
 
-	FREE HTML5 TEMPLATE
-	DESIGNED & DEVELOPED by FreeHTML5.co
+input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    cursor: pointer;
+    opacity: 1;
+    filter: alpha(opacity=1);
+}
 
-	Website: 		http://freehtml5.co/
-	Email: 			info@freehtml5.co
-	Twitter: 		http://twitter.com/fh5co
-	Facebook: 		https://www.facebook.com/fh5co
+.form-inline .form-group{
+    margin-left: 0;
+    margin-right: 0;
+}
+.control-label {
+    color:#333333;
+}
+</style>
 
-	//////////////////////////////////////////////////////
-	 -->
-
-  	<!-- Facebook and Twitter integration -->
-	<meta property="og:title" content=""/>
-	<meta property="og:image" content=""/>
-	<meta property="og:url" content=""/>
-	<meta property="og:site_name" content=""/>
-	<meta property="og:description" content=""/>
-	<meta name="twitter:title" content="" />
-	<meta name="twitter:image" content="" />
-	<meta name="twitter:url" content="" />
-	<meta name="twitter:card" content="" />
-
-	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-	<link rel="shortcut icon" href="favicon.ico">
-
-	<link href='https://fonts.googleapis.com/css?family=Roboto:400,300,600,400italic,700' rel='stylesheet' type='text/css'>
-	<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-
-	<!-- Animate.css -->
-	<link rel="stylesheet" href="stylesheets/animate.css">
-	<!-- Icomoon Icon Fonts-->
-	<link rel="stylesheet" href="stylesheets/icomoon.css">
-	<!-- Bootstrap  -->
-	<link rel="stylesheet" href="stylesheets/bootstrap.css">
-	<!-- Owl Carousel -->
-	<link rel="stylesheet" href="stylesheets/owl.carousel.min.css">
-	<link rel="stylesheet" href="stylesheets/owl.theme.default.min.css">
-	<!-- Theme style  -->
-	<link rel="stylesheet" href="stylesheets/style.css">
-
-	<!-- Modernizr JS -->
-	<script src="javascripts/modernizr-2.6.2.min.js"></script>
-	<!-- FOR IE9 below -->
-	<!--[if lt IE 9]>
-	<script src="js/respond.min.js"></script>
-	<![endif]-->
-	</head>
-	<body>
-	<% if(errors){ %> 
-        <ul>
-        <% errors.forEach(function( err){ %>
-            <li> <%= err.msg %> </li>
-        <% }) %>
-        </ul>
-    <%}%>
 	<div id="fh5co-page">
 
 		<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
@@ -110,78 +88,129 @@
 			</div>
 			<div class="container-fluid" class="container">
 			    	<div class="table-responsive">
-			 			<table class="table table-stripped table table-bordered table table-hover">
-<form action="/users/signup" method="post" >
-			    			<tr class="warning">
 
-			                	<td><label>User name</label></td>
-			               		<td><input type="text" name="username" placeholder="User Name" ></td>
-			                 </tr>
 
-			                <tr class="warning">
-			                	<td><label>Email</label></td>
-			               		<td><input type="email"  placeholder="user@mail.com" name="email"  ></td>
-			                 </tr>
-
-			                <tr class="warning">
-			                	<td><label>Contact no </label></td>
-			               		<td><input type="text" name="contact" placeholder="Contacat No"></td>
-			                 </tr>
-
-			                <tr class="warning">
-			                	<td><label>Address</label></td>
-			               		<td><input type="text" name="address "  placeholder="Address"></td>
-			                 </tr>
-
-			                 <tr class="warning">
-			                	<td><label>City</label></td>
-			               		<td><input type="text" name="city"  placeholder="City"></td>
-			                 </tr>
-
-			                <tr class="warning">
-			                	<td><label>Country</label></td>
-			               		<td><input type="text" name="country" placeholder="Country" ></td>
-			                 </tr>
-
-			        </table>
-
-			               <tr class="warning">
-			                 	<td>
-			                    	<input type="submit" value="Submit"  class="btn btn-success" id="b1" >
-
-			                    	<input type="button" value="Reset" class="btn btn-success" >
-			                    </td>
-			                </tr>
-</form>
 			             </div>
+<div class="container">
+	<table class="table table-responsive table-hover table-striped">
+
+	<div class="row">
+    <div class="col-md-8">
+      <section>
+
+        <hr>
+            <form class="form-horizontal" method="post" action="/users/signup" name="signup" id="signup" enctype="multipart/form-data" >
+        <tr><td><div class="form-group">
+          <label class="control-label col-sm-3">Email ID <span class="text-danger">*</span></label>
+        <div class="col-md-8 col-sm-9">
+              <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+              <input type="email" class="form-control" name="email" id="emailid" placeholder="Enter your Email ID" value="">
+            </div>
+            <small> Your Email Id is being used for ensuring the security of your account, authorization and access recovery. </small> </div>
+        </div></td></tr>
+
+        <tr><td><div class="form-group">
+          <label class="control-label col-sm-3">Set Password <span class="text-danger">*</span></label>
+          <div class="col-md-5 col-sm-8">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+              <input type="password" class="form-control" name="password" id="password" placeholder="Choose password (5-15 chars)" value="">
+           </div>
+          </div>
+        </div></td></tr>
+        <tr><td><div class="form-group">
+          <label class="control-label col-sm-3">Confirm Password <span class="text-danger">*</span></label>
+          <div class="col-md-5 col-sm-8">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+              <input type="password" class="form-control" name="cpassword" id="cpassword" placeholder="Confirm your password" value="">
+            </div>
+          </div>
+        </div></td></tr>
+        <tr><td><div class="form-group">
+          <label class="control-label col-sm-3">Full Name <span class="text-danger">*</span></label>
+          <div class="col-md-8 col-sm-9">
+            <input type="text" class="form-control" name="username" id="mem_name" placeholder="Enter your Name here" value="">
+          </div>
+        </div></td></tr>
+        <tr><td><div class="form-group">
+          <label class="control-label col-sm-3">Date of Birth <span class="text-danger">*</span></label>
+          <div class="col-xs-8">
+            <div class="form-inline">
+              <div class="form-group">
+                <select name="dd" class="form-control">
+                  <option value="">Date</option>
+                  <option value="1" >1 </option><option value="2" >2 </option><option value="3" >3 </option><option value="4" >4 </option><option value="5" >5 </option><option value="6" >6 </option><option value="7" >7 </option><option value="8" >8 </option><option value="9" >9 </option><option value="10" >10 </option><option value="11" >11 </option><option value="12" >12 </option><option value="13" >13 </option><option value="14" >14 </option><option value="15" >15 </option><option value="16" >16 </option><option value="17" >17 </option><option value="18" >18 </option><option value="19" >19 </option><option value="20" >20 </option><option value="21" >21 </option><option value="22" >22 </option><option value="23" >23 </option><option value="24" >24 </option><option value="25" >25 </option><option value="26" >26 </option><option value="27" >27 </option><option value="28" >28 </option><option value="29" >29 </option><option value="30" >30 </option><option value="31" >31 </option>                </select>
+              </div>
+              <div class="form-group">
+                <select name="mm" class="form-control">
+                  <option value="">Month</option>
+                  <option value="1">Jan</option><option value="2">Feb</option><option value="3">Mar</option><option value="4">Apr</option><option value="5">May</option><option value="6">Jun</option><option value="7">Jul</option><option value="8">Aug</option><option value="9">Sep</option><option value="10">Oct</option><option value="11">Nov</option><option value="12">Dec</option>                </select>
+              </div>
+              <div class="form-group" >
+                <select name="yyyy" class="form-control">
+                  <option value="0">Year</option>
+                  <option value="1955" >1955 </option><option value="1956" >1956 </option><option value="1957" >1957 </option><option value="1958" >1958 </option><option value="1959" >1959 </option><option value="1960" >1960 </option><option value="1961" >1961 </option><option value="1962" >1962 </option><option value="1963" >1963 </option><option value="1964" >1964 </option><option value="1965" >1965 </option><option value="1966" >1966 </option><option value="1967" >1967 </option><option value="1968" >1968 </option><option value="1969" >1969 </option><option value="1970" >1970 </option><option value="1971" >1971 </option><option value="1972" >1972 </option><option value="1973" >1973 </option><option value="1974" >1974 </option><option value="1975" >1975 </option><option value="1976" >1976 </option><option value="1977" >1977 </option><option value="1978" >1978 </option><option value="1979" >1979 </option><option value="1980" >1980 </option><option value="1981" >1981 </option><option value="1982" >1982 </option><option value="1983" >1983 </option><option value="1984" >1984 </option><option value="1985" >1985 </option><option value="1986" >1986 </option><option value="1987" >1987 </option><option value="1988" >1988 </option><option value="1989" >1989 </option><option value="1990" >1990 </option><option value="1991" >1991 </option><option value="1992" >1992 </option><option value="1993" >1993 </option><option value="1994" >1994 </option><option value="1995" >1995 </option><option value="1996" >1996 </option><option value="1997" >1997 </option><option value="1998" >1998 </option><option value="1999" >1999 </option><option value="2000" >2000 </option><option value="2001" >2001 </option><option value="2002" >2002 </option><option value="2003" >2003 </option><option value="2004" >2004 </option><option value="2005" >2005 </option><option value="2006" >2006 </option>                </select>
+              </div>
+            </div>
+          </div>
+        </div></td></tr>
+        <tr><td><div class="form-group">
+          <label class="control-label col-sm-3">Gender <span class="text-danger">*</span></label>
+          <div class="col-md-8 col-sm-9">
+            <label>
+            <input name="gender" type="radio" value="Male" checked>
+            Male </label>
+               
+            <label>
+            <input name="gender" type="radio" value="Female" >
+            Female </label>
+          </div>
+        </div></td></tr>
+        <tr><td><div class="form-group">
+          <label class="control-label col-sm-3">Contact No. <span class="text-danger">*</span></label>
+          <div class="col-md-5 col-sm-8">
+          	<div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
+            <input type="text" class="form-control" name="contact" id="contactnum" placeholder="Enter your Primary contact no." value="">
+            </div>
+          </div>
+        </div></td></tr>
+        <tr><td><div class="form-group">
+          <label class="control-label col-sm-3">Alternate No. <br>
+          <small>(if any)</small></label>
+          <div class="col-md-5 col-sm-8">
+            <input type="text" class="form-control" name="contactnum2" id="contactnum2" placeholder="Any other or Landline no (if any)" value="">
+          </div>
+        </div></td></tr>
+        <tr><td><div class="form-group">
+          <label class="control-label col-sm-3">Profile Photo <br>
+          <small>(optional)</small></label>
+          <div class="col-md-5 col-sm-8">
+            <div class="input-group"> <span class="input-group-addon" id="file_upload"><i class="glyphicon glyphicon-upload"></i></span>
+              <input type="file" name="file_nm" id="file_nm" class="form-control upload" placeholder="" aria-describedby="file_upload">
+            </div>
+          </div>
+        </div></td></tr>
+
+      <tr><td>  <div class="form-group">
+          <div class="col-xs-offset-3 col-md-8 col-sm-9"><span class="text-muted"><span class="label label-danger">Note:-</span> By clicking Sign Up, you agree to our <a href="#">Terms</a> and that you have read our <a href="#">Policy</a>, including our <a href="#">Cookie Use</a>.</span> </div>
+        </div>
+        <tr><td><div class="form-group">
+          <div class="col-xs-offset-3 col-xs-10">
+            <input name="Submit" type="submit" value="Sign Up" class="btn btn-primary">
+          </div>
+        </div><td></tr>
+      </form>
+    </div>
+</div>
+</div>
 
 
 
 
-
-
-
+</table>
 
 		</div>
 	</div>
-
-	<!-- jQuery -->
-	<script src="javascripts/jquery.min.js"></script>
-	<!-- jQuery Easing -->
-	<script src="javascripts/jquery.easing.1.3.js"></script>
-	<!-- Bootstrap -->
-	<script src="javascripts/bootstrap.min.js"></script>
-	<!-- Carousel -->
-	<script src="javascripts/owl.carousel.min.js"></script>
-	<!-- Stellar -->
-	<script src="javascripts/jquery.stellar.min.js"></script>
-	<!-- Waypoints -->
-	<script src="javascripts/jquery.waypoints.min.js"></script>
-	<!-- Counters -->
-	<script src="javascripts/jquery.countTo.js"></script>
-
-	<!-- MAIN JS -->
-	<script src="javascripts/main.js"></script>
-
-	</body>
-</html>
