@@ -2,6 +2,10 @@ var express = require('express');
 var router = express.Router();
 var User=require('../models/usermodel');
 var expressValidator=require("express-validator");
+var mongoose=require("mongoose");
+mongoose.connect("mongodb://saifraza:saifraza308@ds135486.mlab.com:35486/workerinstreet");
+var bodyparser=require("body-parser");
+
 router.use(expressValidator());
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -10,14 +14,14 @@ router.get('/', function(req, res, next) {
 
 router.post('/signup',function(req,res){
  var username=req.body.username;
- var email=req.body.email;
+  var email=req.body.email;
   var city=req.body.city;
    var country=req.body.country;
     var contact=req.body.contact;
      var address=req.body.address;
      var password=req.body.password;
      var cpassword=req.body.cpassword;
-
+     console.log(req.body.username);
      req.checkBody("username","Username should not be empty").notEmpty();
      req.checkBody("email","email should be valid").notEmpty().isEmail();
      req.checkBody("city","city should not be empty").notEmpty();
@@ -34,24 +38,59 @@ router.post('/signup',function(req,res){
             errors : errors
         });*/
         res.redirect("/registration");
+        console.log(req.body);
         console.log('Error');
-    }
-    else{
-      console.log(req.body);
-      var newuser=new User({
+    }else
+    {
+    
+    var Userschema=new mongoose.Schema({
+        username:{
+            type:String
+        },
+        password:{
+            type:String,
+            hash:true
+        },
+        email:{
+            type:String
+        },
+        address:{
+            type:String
+        },
+        contactno:{
+            type:String
+        },
+        city:{
+            type:String
+        },
+        country:{
+            type:String
+        }
+    });
+    var User=mongoose.model("Rameen",Userschema);
+    var newuser=User({
         username:username,
-        email:email,
         password:password,
+        email:email,
+        address:address,
         contactno:contact,
         city:city,
-        country:country,
-        address:address
-      });
-      User.createuser(newuser,function(err,user){
-        if(err){ throw err;}
-        else { res.redirect('/');}
-      })
+        country:country
+    }).save(function(err,user){
+        if(err) throw err;
+    });
+    if(newuser)
+    {
+        console.log("user registered");
     }
+    else
+    {
+        console.log("Error");
+    }
+
+    }
+   
+    
 
 
 },function(req,res){
