@@ -9,17 +9,16 @@ var expressValidator=require("express-validator");
 var expressSession=require("express-session");
 var index = require('./routes/index');
 var users = require('./routes/users');
-var ejsLayout = require('express-ejs-layouts');
-var ejs=require("ejs");
+//var ejsLayout = require('express-ejs-layouts');
+var hbs=require("express-handlebars");
 var app = express();
-
+app.engine('hbs',hbs({extname:"hbs",defaultLayout:"layout",layoutsDir:__dirname+"/views/layouts/"}));
 app.use(flash()); // use connect-flash for flash messages stored in session
-app.use(ejsLayout);
+//app.use(ejsLayout);
 // view engine setup
-app.set('view engine', 'ejs');
+app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
 
-app.use(express.static(__dirname+"public"));
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
