@@ -76,23 +76,43 @@
     {{{ body }}}
 
 <!-- jQuery -->
-	<script src="javascripts/jquery.min.js"></script>
+	<script src="/javascripts/jquery.min.js"></script>
 	<!-- jQuery Easing -->
-	<script src="javascripts/jquery.easing.1.3.js"></script>
+	<script src="/javascripts/jquery.easing.1.3.js"></script>
 	<!-- Bootstrap -->
-	<script src="javascripts/bootstrap.min.js"></script>
+	<script src="/javascripts/bootstrap.min.js"></script>
 	<!-- Carousel -->
-	<script src="javascripts/owl.carousel.min.js"></script>
+	<script src="/javascripts/owl.carousel.min.js"></script>
 	<!-- Stellar -->
-	<script src="javascripts/jquery.stellar.min.js"></script>
+	<script src="/javascripts/jquery.stellar.min.js"></script>
 	<!-- Waypoints -->
-	<script src="javascripts/jquery.waypoints.min.js"></script>
+	<script src="/javascripts/jquery.waypoints.min.js"></script>
 	<!-- Counters -->
-	<script src="javascripts/jquery.countTo.js"></script>
+	<script src="/javascripts/jquery.countTo.js"></script>
 
 
 	<!-- MAIN JS -->
-	<script src="javascripts/main.js"></script>
+	<script src="/javascripts/main.js"></script>
+	<!-- Jquery -->
+	<script src="/javascript/jquery.js"></script>
 
 	</body>
+	<script>
+	$(document).ready(function(){
+
+	function userposition(pos){
+		var lati=24.8602;
+		var longi=67.0699;
+		var coords=lati+","+longi;
+    var x=document.getElementById("map").setAttribute('src','https://www.google.com/maps/embed/v1/place?key=AIzaSyDQ_YowBXrKttpiLOsY1w41ArSbXsjCcG4&q='+coords);
+		//x.innerHTML="<iframe id='google_map' width='1000' height='1000' frameborder='0' style='border:0' src='https://www.google.com/maps/embed/v1/place?key=AIzaSyDQ_YowBXrKttpiLOsY1w41ArSbXsjCcG4&q='+coords allowfullscreen> </iframe>"
+	}
+	if(navigator.geolocation){
+		navigator.geolocation.getCurrentPosition(userposition);
+	}
+	else {
+		x.innerHTML="Your Current Location Is Not Available";
+	}
+	});
+	</script>
 </html>
