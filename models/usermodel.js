@@ -2,6 +2,7 @@ var express=require("express");
 var app=express();
 var mongoose=require('mongoose');
 mongoose.connect("mongodb://saifraza:saifraza308@ds135486.mlab.com:35486/workerinstreet");
+var bcrypt=require("bcrypt");
 
 var userschemas=module.exports=new mongoose.Schema({
   username:{
@@ -29,5 +30,12 @@ var userschemas=module.exports=new mongoose.Schema({
 });
 var User=module.exports=mongoose.model("Users",userschemas);
 module.exports.createuser=function(newuser,callback){
-  newuser.save(callback);
+  bcrypt.genSalt(10,function(err,salt){
+    bcrypt.hash(newuser.password,salt,function(err,hash){
+      if(err) throw err;
+      newuser.password=hash;
+      newuser.save(callback);
+    })
+  })
+
 }

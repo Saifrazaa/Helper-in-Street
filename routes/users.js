@@ -3,7 +3,7 @@ var router = express.Router();
 var User=require('../models/usermodel');
 var passport=require("passport").LocalStrategy;
 var expressValidator=require("express-validator");
-
+var passport=require("passport");
 var bodyparser=require("body-parser");
 //router.use(passport.initialized);
 
@@ -24,16 +24,13 @@ router.post('/signup',function(req,res){
      var cpassword=req.body.cpassword;
      console.log(req.body.username);
 
-     req.checkBody("email","email should be valid").isEmail();
-     req.checkBody("cpassword","Please Confirm Your Password").equals(req.body.cpassword);
+     req.checkBody("email","Please Enter A Valid Email Address").isEmail();
+     req.checkBody('password',"Your Password Length Should be greater than 8 charachters").isLength({ min: 8 });
+     req.checkBody("cpassword","Your Password Does not Match").equals(req.body.password);
      var errors = req.validationErrors();
      if(errors)
      {
-		//You need to re-render template with error variables
-		/*res.render('registration',{
-            errors : errors
-        });*/
-        res.redirect("/registration");
+	      res.render("registration",{errors:errors});
         console.log(req.body);
         console.log('Error');
     }else
@@ -50,19 +47,24 @@ router.post('/signup',function(req,res){
     var userregister=User.createuser(newuser,function(err,user){
       if (err) throw err;
       console.log("User Registered");
+      req.login(user,function(err){
+        if (err) throw err;
+        res.redirect("/");
+      })
     });
-
-    }
-
-
-
-
+}});
+passport.serializeUser(function(user, done) {
+  done(null, user.id);
 });
+
+passport.deserializeUser(function(id, done) {
+  User.findById(id, function (err, user) {
+    done(err, user);
+  });
+});
+
 router.post('/login',function(req,res){
   var username=req.body.username;
   var password=req.body.password;
-
-
-})
-
+});
 module.exports = router;

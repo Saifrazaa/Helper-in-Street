@@ -9,6 +9,7 @@ var expressValidator=require("express-validator");
 var expressSession=require("express-session");
 var index = require('./routes/index');
 var users = require('./routes/users');
+var workers=require('./routes/workers');
 //var ejsLayout = require('express-ejs-layouts');
 var hbs=require("express-handlebars");
 var app = express();
@@ -18,6 +19,8 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 // view engine setup
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
+//Authenticated Packages
+var passport=require("passport");
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -30,13 +33,16 @@ app.use(expressSession({
   secret: 'keyboard cat',
   resave: false,
   saveUninitialized: true,
-  cookie: { secure: true }
+  //cookie: { secure: true }
 }));
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/workers',workers);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,5 +1,4 @@
 
-
 <style>
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700);
 @import url(http://fonts.googleapis.com/css?family=Roboto+Condensed:400,300,700);
@@ -47,7 +46,8 @@ input.upload {
 		<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
 		<aside id="fh5co-aside" role="complementary" class="border">
 
-			<h1 id="fh5co-logo"><a href="/"><img src="images/logo-colored.png" alt="Free HTML5 Bootstrap Website Template"></a></h1>
+			<h1 id="fh5co-logo"><a href="/"><img src="images/logo.jpg" style="width:200px;height:200px" alt="Worker In Street"></a></h1>
+      <p style="color:green;margin-left:30px">Worker in Street</p>
       <nav id="fh5co-main-menu" role="navigation">
         <ul>
           <li><a href="/">Home</a></li>
@@ -62,7 +62,7 @@ input.upload {
       </nav>
 
 			<div class="fh5co-footer">
-				<p><small>&copy; 2016 Blend Free HTML5. All Rights Reserved.</span> <span>Designed by <a href="http://freehtml5.co/" target="_blank">FreeHTML5.co</a> </span> <span>Demo Images: <a href="http://pexels.com/" target="_blank">Pexels</a></span></small></p>
+				<p><small>&copy; copyright Worker in Street</span> <span>Owned By <a href="https://www.facebook.com/saifrazaaa" target="_blank">Saif Raza</a> </span> </small></p>
 				<ul>
 					<li><a href="#"><i class="icon-facebook"></i></a></li>
 					<li><a href="#"><i class="icon-twitter"></i></a></li>
@@ -75,10 +75,7 @@ input.upload {
 
 		<div id="fh5co-main">
 
-			<div class="fh5co-narrow-content">
-				<h1>Please Sign Up To get Start</h1>
 
-			</div>
 			<div class="container-fluid" class="container">
 			    	<div class="table-responsive">
 
@@ -86,20 +83,33 @@ input.upload {
 			             </div>
 <div class="container">
 	<table class="table table-responsive table-hover table-striped">
+    <div class="fh5co-narrow-content">
+      <h1>Please Sign Up To get Start</h1>
 
+    </div>
 	<div class="row">
     <div class="col-md-8">
       <section>
 
         <hr>
+        {{#if errors }}
+        <ul class="alert alert-danger" >
+        {{# each errors}}
+
+<li>   {{this.msg}}</li>
+
+        {{/each}}
+      </ul>
+      {{/if}}
             <form class="form-horizontal" method="post" action="/users/signup"  >
         <tr><td><div class="form-group">
           <label class="control-label col-sm-3">Email ID <span class="text-danger">*</span></label>
         <div class="col-md-8 col-sm-9">
               <div class="input-group">
               <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-              <input type="email" value="rameen@gmail.com" class="form-control" required name="email"   placeholder="Enter your Email ID">
+              <input type="email" value="someone@example.com" required class="form-control"  name="email"   placeholder="Enter your Email ID">
             </div>
+
             <small> Your Email Id is being used for ensuring the security of your account, authorization and access recovery. </small> </div>
         </div></td></tr>
 
@@ -108,7 +118,7 @@ input.upload {
           <div class="col-md-5 col-sm-8">
             <div class="input-group">
               <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-              <input type="password" value="123" required class="form-control" name="password"  placeholder="Choose password (5-15 chars)" >
+              <input type="password" value="12345678" required class="form-control" name="password"  placeholder="Choose password (5-15 chars)" >
            </div>
           </div>
         </div></td></tr>
@@ -117,14 +127,14 @@ input.upload {
           <div class="col-md-5 col-sm-8">
             <div class="input-group">
               <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-              <input type="password" value="123" required class="form-control" name="cpassword"  placeholder="Confirm your password" >
+              <input type="password" value="12345678" required class="form-control" name="cpassword"  placeholder="Confirm your password" >
             </div>
           </div>
         </div></td></tr>
         <tr><td><div class="form-group">
           <label class="control-label col-sm-3">Full Name <span class="text-danger">*</span></label>
           <div class="col-md-8 col-sm-9">
-            <input type="text" class="form-control" required value="rameen" name="username"  placeholder="Enter your Name here" >
+            <input type="text" class="form-control" required value="workers" name="username"  placeholder="Enter your Name here" >
           </div>
         </div></td></tr>
 
@@ -134,7 +144,7 @@ input.upload {
           <div class="col-md-5 col-sm-8">
           	<div class="input-group">
               <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
-            <input type="text" class="form-control" required value="123" name="contact"  placeholder="Enter your Primary contact no." >
+            <input type="text" class="form-control" required value="03087256653" name="contact"  placeholder="Enter your Primary contact no." >
             </div>
           </div>
         </div></td></tr>
@@ -143,7 +153,7 @@ input.upload {
           <label class="control-label col-sm-3">Address <br>
           <small>(if any)</small></label>
           <div class="col-md-5 col-sm-8">
-            <input type="text" class="form-control" required name="address" id="contactnum2" placeholder="Any other or Landline no (if any)" value="fash">
+            <input type="text" class="form-control" required name="address" id="contactnum2" placeholder="Any other or Landline no (if any)" value="karachi">
           </div>
         </div></td></tr>
         <tr><td><div class="form-group">
@@ -171,6 +181,8 @@ input.upload {
           </div>
         </div><td></tr>
       </form>
+
+
     </div>
 </div>
 </div>
