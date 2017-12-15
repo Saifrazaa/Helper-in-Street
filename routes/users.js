@@ -5,7 +5,10 @@ var passport=require("passport").LocalStrategy;
 var expressValidator=require("express-validator");
 var passport=require("passport");
 var bodyparser=require("body-parser");
+var bcrypt=require("bcrypt");
 //router.use(passport.initialized);
+//require passport local strategy
+var LocalStrategy=require("passport-local").Strategy;
 
 router.use(expressValidator());
 /* GET users listing. */
@@ -62,9 +65,25 @@ passport.deserializeUser(function(id, done) {
     done(err, user);
   });
 });
+passport.use(new LocalStrategy(function(username,password,done){
+  User.findOne({username:username},function(err,user){
+    if(err) throw err;
+    if(!user){
+      return done(null,false,{message:"not a user"});
+    }
+    var compassword=bcrypt.compare(user.password,this.password);
+    User.findOne({compassword:password},function(err,isMatch){
+      if (err) throw err;
+      if(!isMatch)
+      {
+        return done(null,false,{message:"password do not match"})
+      }
+      return done(null,user);
+    })
+  })
+}));
+router.post('/login',passport.authenticate("local",{successRedirect:"/",failureRedirect:"/login",failureFlash:true}),function(req,res){
+  console.log("successfully loged in");
 
-router.post('/login',function(req,res){
-  var username=req.body.username;
-  var password=req.body.password;
 });
 module.exports = router;

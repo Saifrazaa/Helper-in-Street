@@ -22,7 +22,7 @@
     "node-pre-gyp": "^0.6.39",
     "nodemon": "^1.12.7",
     "passport": "~0.1.17",
-    "passport-local": "~0.1.6",
+    "passport-local": "^0.1.6",
     "serve-favicon": "~2.4.5"
   }
 }

@@ -1,7 +1,7 @@
 var express=require("express");
 var app=express();
 var mongoose=require('mongoose');
-mongoose.connect("mongodb://saifraza:saifraza308@ds135486.mlab.com:35486/workerinstreet");
+mongoose.connect("mongodb://localhost/users");
 var bcrypt=require("bcrypt");
 
 var userschemas=module.exports=new mongoose.Schema({
@@ -38,4 +38,8 @@ module.exports.createuser=function(newuser,callback){
     })
   })
 
+}
+
+module.exports.validpassword=function(password){
+  bcrypt.compare(password,this.password);
 }

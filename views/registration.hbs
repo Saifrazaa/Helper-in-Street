@@ -48,10 +48,12 @@ input.upload {
 
 			<h1 id="fh5co-logo"><a href="/"><img src="images/logo.jpg" style="width:200px;height:200px" alt="Worker In Street"></a></h1>
       <p style="color:green;margin-left:30px">Worker in Street</p>
+      <hr>
       <nav id="fh5co-main-menu" role="navigation">
 				<ul>
 
 					{{#if Dashboard}}
+          <h4 class="text text-success">{{user.username}}</h4>
 					<li><a href="/" style="cursor:pointer">Home</a></li>
 					<li><a href="/services">Services</a></li>
 					<li><a href="/workers/dashboard">Dashboard</a></li>
@@ -145,7 +147,7 @@ input.upload {
         <tr><td><div class="form-group">
           <label class="control-label col-sm-3">Full Name <span class="text-danger">*</span></label>
           <div class="col-md-8 col-sm-9">
-            <input type="text" class="form-control" required value="workers" name="username"  placeholder="Enter your Name here" >
+            <input type="text" class="form-control" required value="Saif Raza" name="username"  placeholder="Enter your Name here" >
           </div>
         </div></td></tr>
 

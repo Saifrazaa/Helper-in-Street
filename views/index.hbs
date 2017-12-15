@@ -8,8 +8,10 @@
        <p style="color:green;margin-left:30px">Worker in Street</p>
 
 			<nav id="fh5co-main-menu" role="navigation">
+				{{#if user}}
+				<h3 class="col-lg-12 col-sm-6 text text-success" >  &nbsp; {{user.username}}</h3>
+				{{/if}}
 				<ul>
-
 					{{#if Dashboard}}
 					<li class="fh5co-active"><a onclick="alert('you are already in homepage')" style="cursor:pointer">Home</a></li>
 					<li><a href="/services">Services</a></li>
