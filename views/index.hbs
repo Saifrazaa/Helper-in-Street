@@ -9,7 +9,15 @@
 
 			<nav id="fh5co-main-menu" role="navigation">
 				<ul>
-					<li class="fh5co-active"><a style="cursor:pointer">Home</a></li>
+
+					{{#if Dashboard}}
+					<li class="fh5co-active"><a onclick="alert('you are already in homepage')" style="cursor:pointer">Home</a></li>
+					<li><a href="/services">Services</a></li>
+					<li><a href="/workers/dashboard">Dashboard</a></li>
+					<li><a href="/aboutus">About Us</a></li>
+					<li><a href="/contactus">Contact Us</a></li>
+					{{else}}
+					<li class="fh5co-active"><a onclick="alert('you are already in homepage')" style="cursor:pointer">Home</a></li>
 
 					<li><a href="/services">Services</a></li>
 					<li><a href="/registration">Registration</a></li>
@@ -17,6 +25,9 @@
 
 					<li><a href="/aboutus">About Us</a></li>
 					<li><a href="/contactus">Contact Us</a></li>
+					{{/if}}
+
+
 				</ul>
 			</nav>
 

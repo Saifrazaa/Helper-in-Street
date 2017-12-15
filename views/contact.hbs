@@ -9,12 +9,25 @@
 			<p style="color:green;margin-left:30px">Worker in Street</p>
 			<nav id="fh5co-main-menu" role="navigation">
 				<ul>
-					<li><a href="/">Home</a></li>
+
+					{{#if Dashboard}}
+					<li ><a href="/" style="cursor:pointer">Home</a></li>
+					<li><a href="/services">Services</a></li>
+					<li><a href="/workers/dashboard">Dashboard</a></li>
+					<li><a href="/aboutus">About Us</a></li>
+					<li class="fh5co-active"><a href="">Contact Us</a></li>
+					{{else}}
+					<li ><a href="/" style="cursor:pointer">Home</a></li>
+
 					<li><a href="/services">Services</a></li>
 					<li><a href="/registration">Registration</a></li>
-					<li ><a href="/login">Login</a></li>
+					<li><a href="/login">Login</a></li>
+
 					<li><a href="/aboutus">About Us</a></li>
-					<li class="fh5co-active"><a style="cursor:pointer">Contact Us</a></li>
+					<li class="fh5co-active"><a href="">Contact Us</a></li>
+					{{/if}}
+
+
 				</ul>
 			</nav>
 
@@ -31,7 +44,7 @@
 		</aside>
 
 		<div id="fh5co-main">
-			
+
 
 			<div class="col-lg-12 col-sm-12 col-md-12 "><iframe id="map" width="1000" height="1000" frameborder="0" style="border:0" src="" allowfullscreen></iframe></div>
 			<div class="fh5co-more-contact">

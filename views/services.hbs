@@ -10,14 +10,25 @@
 			<p style="color:green;margin-left:30px">Worker in Street</p>
 			<nav id="fh5co-main-menu" role="navigation">
 				<ul>
-					<li><a href="/">Home</a></li>
 
-					<li class="fh5co-active"><a style="cursor:pointer">Services</a></li>
+					{{#if Dashboard}}
+					<li ><a href="/" style="cursor:pointer">Home</a></li>
+					<li class="fh5co-active"><a href="">Services</a></li>
+					<li><a href="/workers/dashboard">Dashboard</a></li>
+					<li><a href="/aboutus">About Us</a></li>
+					<li><a href="/contactus">Contact Us</a></li>
+					{{else}}
+					<li><a href="/" style="cursor:pointer">Home</a></li>
+
+					<li class="fh5co-active"><a href="">Services</a></li>
 					<li><a href="/registration">Registration</a></li>
 					<li><a href="/login">Login</a></li>
 
 					<li><a href="/aboutus">About Us</a></li>
 					<li><a href="/contactus">Contact Us</a></li>
+					{{/if}}
+
+
 				</ul>
 			</nav>
 

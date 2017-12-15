@@ -1,7 +1,8 @@
 var express=require("express");
 var router=express.Router();
-router.get("/login",checkauthentication,function(req,res){
-  res.send("You are in worker folder");
+router.get("/dashboard",function(req,res){
+  res.render("worker/dashboard",{title:"Workers Dashboard"});
+
 });
 function checkauthentication(req,res,next){
   if(req.isAuthenticated()){

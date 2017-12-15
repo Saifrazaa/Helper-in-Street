@@ -49,17 +49,28 @@ input.upload {
 			<h1 id="fh5co-logo"><a href="/"><img src="images/logo.jpg" style="width:200px;height:200px" alt="Worker In Street"></a></h1>
       <p style="color:green;margin-left:30px">Worker in Street</p>
       <nav id="fh5co-main-menu" role="navigation">
-        <ul>
-          <li><a href="/">Home</a></li>
+				<ul>
 
-          <li><a href="/services">Services</a></li>
-          <li class="fh5co-active"><a style="cursor:pointer">Registration</a></li>
-          <li><a href="/login">Login</a></li>
+					{{#if Dashboard}}
+					<li><a href="/" style="cursor:pointer">Home</a></li>
+					<li><a href="/services">Services</a></li>
+					<li><a href="/workers/dashboard">Dashboard</a></li>
+					<li><a href="/aboutus">About Us</a></li>
+					<li><a href="/contactus">Contact Us</a></li>
+					{{else}}
+					<li><a href="/" style="cursor:pointer">Home</a></li>
 
-          <li><a href="/aboutus">About Us</a></li>
-          <li><a href="/contactus">Contact Us</a></li>
-        </ul>
-      </nav>
+					<li><a href="/services">Services</a></li>
+					<li class="fh5co-active"><a href="">Registration</a></li>
+					<li><a href="/login">Login</a></li>
+
+					<li><a href="/aboutus">About Us</a></li>
+					<li><a href="/contactus">Contact Us</a></li>
+					{{/if}}
+
+
+				</ul>
+			</nav>
 
 			<div class="fh5co-footer">
 				<p><small>&copy; copyright Worker in Street</span> <span>Owned By <a href="https://www.facebook.com/saifrazaaa" target="_blank">Saif Raza</a> </span> </small></p>
