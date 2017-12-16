@@ -1,4 +1,5 @@
 var express = require('express');
+var passport=require("passport");
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -7,11 +8,12 @@ var bodyParser = require('body-parser');
 var flash    = require('connect-flash');
 var expressValidator=require("express-validator");
 var expressSession=require("express-session");
+var hbs=require("express-handlebars");
 var index = require('./routes/index');
 var users = require('./routes/users');
 var workers=require('./routes/workers');
 //var ejsLayout = require('express-ejs-layouts');
-var hbs=require("express-handlebars");
+
 var app = express();
 app.engine('hbs',hbs({extname:"hbs",defaultLayout:"layout",layoutsDir:__dirname+"/views/layouts/"}));
 app.use(flash()); // use connect-flash for flash messages stored in session
@@ -20,7 +22,7 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
 //Authenticated Packages
-var passport=require("passport");
+
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -31,7 +33,7 @@ app.use(expressValidator());
 app.use(cookieParser());
 app.use(expressSession({
   secret: 'keyboard cat',
-  resave: false,
+  resave: true,
   saveUninitialized: true,
   //cookie: { secure: true }
 }));
