@@ -1,4 +1,3 @@
-var User=require("../models/usermodel");
 var AuthCtrl = {
   signup:function(req,res,next){
     var username=req.body.username;
@@ -22,15 +21,18 @@ var AuthCtrl = {
              console.log('Error');
          }else
          {
-         var newuser= new User({
-             username:username,
-             password:password,
-             email:email,
-             address:address,
-             contactno:contact,
-             city:city,
-             country:country
-         });
+
+           var User=require("../models/usermodel");
+           User.newuser();
+         // var newuser= new User({
+         //     username:username,
+         //     password:password,
+         //     email:email,
+         //     address:address,
+         //     contactno:contact,
+         //     city:city,
+         //     country:country
+         };
          var userregister=User.createuser(newuser,function(err,user){
            if (err) throw err;
            console.log("User Registered");
@@ -41,7 +43,7 @@ var AuthCtrl = {
          });
      }}
 
-  }
+
 
 
 
