@@ -20,11 +20,11 @@ router.get("/dashboard",checkauthentication,function(req,res,next){
 });
 router.get("/edit_profile",checkauthentication,function(req,res,next){
   console.log(req.user);
-  res.render("edit_profile",{title:"Edit Profile",user:req.user});
+  res.render("edit_profile",{title:req.user.username+" ,Edit Profile",user:req.user});
 })
 router.get("/history",checkauthentication,function(req,res,next){
   console.log(req.user);
-  res.render("history",{title:"History",user:req.user});
+  res.render("history",{title:req.user.username+" ,History",user:req.user});
 })
 router.post("/edit_profile",checkauthentication,function(req,res,next){
   console.log(req.user);

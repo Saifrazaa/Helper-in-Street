@@ -53,5 +53,13 @@ module.exports.createuser=function(newuser,callback){
       newuser.save(callback);
     })
   })
-
 }
+// module.exports.updateUser=function(updateuser,callback){
+//   bcrypt.genSalt(10,function(err,salt){
+//     bcrypt.hash(updateuser.password,salt,function(err,hash){
+//       if(err) throw err;
+//       updateuser.password=hash;
+//       updateuser
+//     })
+//   })
+// }

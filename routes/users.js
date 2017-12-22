@@ -13,7 +13,8 @@ var uploads=multer({dest:"public/uploads/"});
 
 //load the config file of passport
 var passportconfig=require("../config/passport");
-
+//load the validation middleware
+//var updatevalid=require("../middleware/validation")
 
 //require passport local strategy
 var LocalStrategy=require("passport-local").Strategy;
@@ -30,7 +31,7 @@ router.post('/signup',uploads.single("picture"),function(req,res,next){
   var email=req.body.email;
   var city=req.body.city;
   var country=req.body.country;
-       var contact=req.body.contact;
+       var contactno=req.body.contactno;
         var address=req.body.address;
         var password=req.body.password;
         var type=req.body.type;
@@ -86,5 +87,52 @@ router.post('/signup',uploads.single("picture"),function(req,res,next){
 
     }
 });
+router.post("/update",uploads.single("picture"),function(req,res){
+        var username=req.body.username;
+        var city=req.body.city;
+        var country=req.body.country;
+        var contactno=req.body.contactno;
+        var address=req.body.address;
+        var password=req.body.password;
+        var type=req.body.type;
+        var cpassword=req.body.cpassword;
+        var description=req.body.description;
+
+        var profilephoto=req.file.filename;
+        console.log(req.body);
+
+        req.checkBody('password',"Your Password Length Should be greater than 8 charachters").isLength({ min: 8 });
+        req.checkBody("cpassword","Your Password Does not Match").equals(req.body.password);
+        req.checkBody("description","Your Description field should be greater than 50 characters").isLength({min:30});
+
+
+  var errors=req.validationErrors();
+  if(errors){
+    res.render("edit_profile",{title:req.user.username+" ,Edit Profile",errors:errors,user:req.user});
+  }
+  else {
+    console.log(req.user.id);
+    var query={id:req.user.id};
+    var updateuser=User.update(query,{
+      username    :username,
+      address     :address,
+      password    :password,
+      type        :type,
+      description :description,
+      city        :city,
+      country     :country,
+      contactno   :contactno,
+      photo       :profilephoto
+    });
+    if(updateuser)
+    {
+      console.log("updated");
+      res.redirect("/workers/dashboard");
+    }
+    else {
+      console.log("error in updating");
+    }
+  }
+})
 
 module.exports = router;
