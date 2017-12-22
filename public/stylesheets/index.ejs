@@ -1,0 +1,20 @@
+<div ><iframe id="map" width="1000" height="1000" frameborder="0" style="border:0" src="" allowfullscreen></iframe></div>
+<script>
+$(document).ready(function(){
+
+function userposition(pos){
+var lati=pos.coords.latitude;
+var longi=pos.coords.longitude;
+var coords=lati+","+longi;
+//'https://www.google.com/maps/embed/v1/place?key=AIzaSyDQ_YowBXrKttpiLOsY1w41ArSbXsjCcG4&q='+coords
+  var x=document.getElementById("map").setAttribute('src',"https://maps.googleapis.com/maps/api/staticmap?center="+coords+"&zoom=14&size=400x300&sensor=false&key=AIzaSyDQ_YowBXrKttpiLOsY1w41ArSbXsjCcG4";);
+  //x.innerHTML="<iframe id='google_map' width='1000' height='1000' frameborder='0' style='border:0' src='https://www.google.com/maps/embed/v1/place?key=AIzaSyDQ_YowBXrKttpiLOsY1w41ArSbXsjCcG4&q='+coords allowfullscreen> </iframe>"
+}
+if(navigator.geolocation){
+  navigator.geolocation.getCurrentPosition(userposition);
+}
+else {
+  x.innerHTML+="Your Current Location Is Not Available";
+}
+});
+</script>

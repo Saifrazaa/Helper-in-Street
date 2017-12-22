@@ -1,0 +1,169 @@
+
+
+<link rel="stylesheets" href="/stylesheets/edit_profile.css" />
+
+	<div id="fh5co-page">
+
+    <aside id="fh5co-aside" role="complementary" class="border js-fullheight">
+
+
+
+      <nav id="fh5co-main-menu" role="navigation">
+        <p style="color:green;margin-left:30px">Worker in Street</p>
+        {{#if user}}
+        <img src="/uploads/{{user.photo}}" class="img-responsive img-circle" alt="Cinque Terre">
+        <br>
+        <h3 class="col-lg-12 col-sm-6 text text-success" >  &nbsp; {{user.username}}</h3>
+				<h4 class="col-lg-12 col-sm-6 text text-info" >You are [{{user.type}}]</h4>
+
+
+        <ul>
+
+
+          <li class="fh5co-active"> <a href="">Edit Profile</a></li>
+          <li><a href="/workers/history">History</a></li>
+          <li><a href="/workers/your_current_location">Current Location</a></li>
+          <li><a href="/">Go To Site</a></li>
+					<li><a href="/workers/dashboard">Dashboard</a></li>
+					<li><a href="/contactus">Contact Us</a></li>
+          <li><a href="/workers/logout" >Logout<a></li>
+
+
+
+        </ul>
+      </nav>
+
+      <div class="fh5co-footer">
+        <p><small>&copy; copyright Worker in Street</span> <span>Owned By<a href="http://www.facebook.com/saifrazaaa" target="_blank"> Saif Raza</a> </span> </small></p>
+        <ul>
+          <li><a href="#"><i class="icon-facebook"></i></a></li>
+          <li><a href="#"><i class="icon-twitter"></i></a></li>
+          <li><a href="#"><i class="icon-instagram"></i></a></li>
+          <li><a href="#"><i class="icon-linkedin"></i></a></li>
+        </ul>
+      </div>
+
+    </aside>
+
+
+		<div id="fh5co-main">
+
+
+			<div class="container-fluid" class="container">
+			    	<div class="table-responsive">
+
+
+			             </div>
+<div class="container">
+	<table class="table table-responsive table-hover table-striped">
+    <div class="fh5co-narrow-content">
+      <h1>Update Your Profile</h1>
+
+    </div>
+	<div class="row">
+    <div class="col-md-8">
+      <section>
+
+        <hr>
+        {{#if errors }}
+        <ul class="alert alert-danger" >
+        {{# each errors}}
+
+        <li>{{this.msg}}</li>
+
+        {{/each}}
+      </ul>
+      {{/if}}
+            <form class="form-horizontal" method="post" action="/workers/edit_profile"  >
+        <tr><td><div class="form-group">
+          <label class="control-label col-sm-3">Email ID <span class="text-danger">*</span></label>
+        <div class="col-md-8 col-sm-9">
+              <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+              <input type="email" value="{{user.email}}" required class="form-control"  name="email"   placeholder="Enter your Email ID">
+            </div>
+
+            <small> Your Email Id is being used for ensuring the security of your account, authorization and access recovery. </small> </div>
+        </div></td></tr>
+
+        <tr><td><div class="form-group">
+          <label class="control-label col-sm-3">Set Password <span class="text-danger">*</span></label>
+          <div class="col-md-5 col-sm-8">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+              <input type="password" value="{{user.password}}" required class="form-control" name="password"  placeholder="Choose password (5-15 chars)" >
+           </div>
+          </div>
+        </div></td></tr>
+        <tr><td><div class="form-group">
+          <label class="control-label col-sm-3">Confirm Password <span class="text-danger">*</span></label>
+          <div class="col-md-5 col-sm-8">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+              <input type="password" value="" required class="form-control" name="cpassword"  placeholder="Confirm your password" >
+            </div>
+          </div>
+        </div></td></tr>
+        <tr><td><div class="form-group">
+          <label class="control-label col-sm-3">Full Name <span class="text-danger">*</span></label>
+          <div class="col-md-8 col-sm-9">
+            <input type="text" class="form-control" required value="{{user.username}}" name="username"  placeholder="Enter your Name here" >
+          </div>
+        </div></td></tr>
+
+
+        <tr><td><div class="form-group">
+          <label class="control-label col-sm-3">Contact No. <span class="text-danger">*</span></label>
+          <div class="col-md-5 col-sm-8">
+          	<div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
+            <input type="text" class="form-control" required value="{{user.contactno}}" name="contact"  placeholder="Enter your Primary contact no." >
+            </div>
+          </div>
+        </div></td></tr>
+
+         <tr><td><div class="form-group">
+          <label class="control-label col-sm-3">Address <br>
+          <small>(if any)</small></label>
+          <div class="col-md-5 col-sm-8">
+            <input type="text" class="form-control" required name="address" id="contactnum2" placeholder="Any other or Landline no (if any)" value="{{user.address}}">
+          </div>
+        </div></td></tr>
+        <tr><td><div class="form-group">
+          <label class="control-label col-sm-3">City <br>
+          <small>(if any)</small></label>
+          <div class="col-md-5 col-sm-8">
+            <input type="text" class="form-control" required name="city"  placeholder="Any other or Landline no (if any)" value="{{user.city}}">
+          </div>
+        </div></td></tr>
+        <tr><td><div class="form-group">
+          <label class="control-label col-sm-3">Country <br>
+          <small>(if any)</small></label>
+          <div class="col-md-5 col-sm-8">
+            <input type="text" class="form-control" required name="country"  placeholder="Any other or Landline no (if any)" value="{{user.country}}">
+          </div>
+        </div></td></tr>
+
+
+      <tr><td>  <div class="form-group">
+          <div class="col-xs-offset-3 col-md-8 col-sm-9"><span class="text-muted"><span class="label label-danger">Note:-</span> By clicking Sign Up, you agree to our <a href="#">Terms</a> and that you have read our <a href="#">Policy</a>, including our <a href="#">Cookie Use</a>.</span> </div>
+        </div>
+        <tr><td><div class="form-group">
+          <div class="col-xs-offset-3 col-xs-10">
+            <input name="Submit" type="submit" value="Sign Up" class="btn btn-primary">
+          </div>
+        </div><td></tr>
+      </form>
+{{/if}}
+
+    </div>
+</div>
+</div>
+
+
+
+
+</table>
+
+		</div>
+	</div>

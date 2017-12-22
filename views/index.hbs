@@ -4,20 +4,24 @@
 		<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
 		<aside id="fh5co-aside" role="complementary" class="border js-fullheight">
 
-			<h1 id="fh5co-logo"><a onclick="alert('You are already in Home Page')" style="cursor:pointer"><img src="images/logo.jpg" style="width:200px;height:200px" alt="Worker In Street"></a></h1>
+			<h1 id="fh5co-logo"><a onclick="alert('You are already in Home Page')" style="cursor:pointer"><img src="/images/logo.jpg" style="width:200px;height:200px" alt="Worker In Street"></a></h1>
        <p style="color:green;margin-left:30px">Worker in Street</p>
 
 			<nav id="fh5co-main-menu" role="navigation">
 				{{#if user}}
 				<h3 class="col-lg-12 col-sm-6 text text-success" >  &nbsp; {{user.username}}</h3>
+					<h4 class="col-lg-12 col-sm-6 text text-info">You are [{{user.type}}]</h4>
 				{{/if}}
 				<ul>
 					{{#if Dashboard}}
 					<li class="fh5co-active"><a onclick="alert('you are already in homepage')" style="cursor:pointer">Home</a></li>
 					<li><a href="/services">Services</a></li>
+				
 					<li><a href="/workers/dashboard">Dashboard</a></li>
+
 					<li><a href="/aboutus">About Us</a></li>
 					<li><a href="/contactus">Contact Us</a></li>
+					<li><a href="/workers/logout" >Log Out<a></li>
 					{{else}}
 					<li class="fh5co-active"><a onclick="alert('you are already in homepage')" style="cursor:pointer">Home</a></li>
 
@@ -49,21 +53,21 @@
 			<div class="fh5co-gallery">
 
 				<a class="gallery-item" href="single.html">
-					<img src="images/mechanics.jpg" alt="Free HTML5 Bootstrap Template by FreeHTML5.co">
+					<img src="/images/mechanics.jpg" alt="Free HTML5 Bootstrap Template by FreeHTML5.co">
 					<span class="overlay">
 						<h2>Mechanics</h2>
 						<span>Find local Mechanic</span>
 					</span>
 				</a>
 				<a class="gallery-item" href="single.html">
-					<img src="images/hometutor.jpg" alt="Free HTML5 Bootstrap Template by FreeHTML5.co">
+					<img src="/images/hometutor.jpg" alt="Free HTML5 Bootstrap Template by FreeHTML5.co">
 					<span class="overlay">
 						<h2>Tutor</h2>
 						<span>Find The Best Tutor</span>
 					</span>
 				</a>
 				<a class="gallery-item" href="single.html">
-					<img src="images/plumber.jpg" alt="Free HTML5 Bootstrap Template by FreeHTML5.co">
+					<img src="/images/plumber.jpg" alt="Free HTML5 Bootstrap Template by FreeHTML5.co">
 					<span class="overlay">
 						<h2>Plumber</h2>
 						<span>Find The Best Plumber</span>
@@ -71,7 +75,7 @@
 				</a>
 
 				<a class="gallery-item" href="single.html">
-					<img src="images/carpenter.jpg" alt="Free HTML5 Bootstrap Template by FreeHTML5.co">
+					<img src="/images/carpenter.jpg" alt="Free HTML5 Bootstrap Template by FreeHTML5.co">
 					<span class="overlay">
 						<h2>Carpenter</h2>
 						<span>Find Best Carpenter</span>
@@ -79,14 +83,14 @@
 				</a>
 
 				<a class="gallery-item" href="single.html">
-					<img src="images/driver.jpg" alt="Free HTML5 Bootstrap Template by FreeHTML5.co">
+					<img src="/images/driver.jpg" alt="Free HTML5 Bootstrap Template by FreeHTML5.co">
 					<span class="overlay">
 						<h2>Driver</h2>
 						<span>Find the Best Driver</span>
 					</span>
 				</a>
 				<a class="gallery-item" href="single.html">
-					<img src="images/electrician.jpg" alt="Free HTML5 Bootstrap Template by FreeHTML5.co">
+					<img src="/images/electrician.jpg" alt="Free HTML5 Bootstrap Template by FreeHTML5.co">
 					<span class="overlay">
 						<h2>Electrician</h2>
 						<span>Find The Best Electrician</span>
@@ -94,14 +98,14 @@
 				</a>
 
 				<a class="gallery-item" href="single.html">
-					<img src="images/photographer.jpg" alt="Free HTML5 Bootstrap Template by FreeHTML5.co">
+					<img src="/images/photographer.jpg" alt="Free HTML5 Bootstrap Template by FreeHTML5.co">
 					<span class="overlay">
 						<h2>Photographer</h2>
 						<span>Find The Best Photographer</span>
 					</span>
 				</a>
 				<a class="gallery-item" href="single.html">
-					<img src="images/labours.jpg" style="height:225px" watermark="Labours" alt="Free HTML5 Bootstrap Template by FreeHTML5.co">
+					<img src="/images/labours.jpg" style="height:225px" watermark="Labours" alt="Free HTML5 Bootstrap Template by FreeHTML5.co">
 					<span class="overlay">
 						<h2>Labours</h2>
 						<span>Find The Best Photographer</span>
@@ -124,7 +128,7 @@
 							</div>
 							<div class="fh5co-text">
 								<h3>What We Offer?</h3>
-								<p>You can Go and Search for the worker and get easy approach to that particular person  </p>
+								<p>We are Offering a problem solving approach for you which can help you to find out any local worker around you</p>
 							</div>
 						</div>
 					</div>

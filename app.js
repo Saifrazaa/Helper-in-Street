@@ -9,14 +9,16 @@ var flash    = require('connect-flash');
 var expressValidator=require("express-validator");
 var expressSession=require("express-session");
 var hbs=require("express-handlebars");
+var multer=require("multer");
 var index = require('./routes/index');
 var users = require('./routes/users');
 var workers=require('./routes/workers');
+
 //var ejsLayout = require('express-ejs-layouts');
 
 var app = express();
 app.engine('hbs',hbs({extname:"hbs",defaultLayout:"layout",layoutsDir:__dirname+"/views/layouts/"}));
-app.use(flash()); // use connect-flash for flash messages stored in session
+
 //app.use(ejsLayout);
 // view engine setup
 app.set('view engine', 'hbs');
@@ -35,11 +37,13 @@ app.use(expressSession({
   secret: 'keyboard cat',
   resave: true,
   saveUninitialized: true,
-  //cookie: { secure: true }
+  cookie: { secure: false }
 }));
+
+
 app.use(passport.initialize());
 app.use(passport.session());
-
+app.use(flash()); // use connect-flash for flash messages stored in session
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
