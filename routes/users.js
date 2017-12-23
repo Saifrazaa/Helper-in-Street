@@ -59,7 +59,7 @@ router.post('/signup',uploads.single("picture"),function(req,res,next){
        email:email,
        photo:profilephoto,
        address:address,
-       contactno:contact,
+       contactno:contactno,
        city:city,
        country:country,
        type:type,
@@ -134,5 +134,4 @@ router.post("/update",uploads.single("picture"),function(req,res){
     }
   }
 })
-
 module.exports = router;
