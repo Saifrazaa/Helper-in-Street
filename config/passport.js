@@ -17,11 +17,13 @@ passport.use("local.signin",new LocalStrategy(
       if (err) { return done(err); }
       if (!user) {
         
-         return done(null, false);
+         return done(null, false,{message:"User not exists"});
+         return req.flash("usernotfound","User is not found");
+                  console.log()
        }
        if(!user.validPassword(password)){
 
-         return done(null,false,{message:"Invalid Password"})
+         return done(null,false,{message:"Invalid Password"});
        }
 
        return done(null,user);

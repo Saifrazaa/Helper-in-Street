@@ -149,8 +149,8 @@ body {
 			<div class="fh5co-narrow-content">
 
 				<p class="text-center quote" style="font-size:25px">If You are A Worker Please Login To Your Account First</p>
-        {{#if message}}
-        {{message}}
+        {{#if req.session}}
+        {{req.session}}
         {{/if}}
 
 			</div>
