@@ -1,7 +1,9 @@
 var express=require("express");
 var router=express.Router();
 var passport=require("passport");
+var axios=require("axios");
 var configpassport=require("../config/passport");
+var User=require("../models/usermodel");
 function checkauthentication(req,res,next)
 {
   if(req.isAuthenticated()){
@@ -11,6 +13,7 @@ function checkauthentication(req,res,next)
   else {
 
     return res.redirect("/login");
+    req.flash("notloggedin","You first need to login to your account");
   }
 }
 router.get("/dashboard",checkauthentication,function(req,res,next){
@@ -39,4 +42,32 @@ router.get("/your_current_location",checkauthentication,function(req,res,next){
   res.render("current_location",{title:"Your current location",user:req.user});
 });
 router.post("/login",passport.authenticate("local.signin",{successRedirect:"/",failureRedirect:"/login",failureFlash:true}));
+router.post("/search",function(req,res){
+  var type=req.body.search;
+  console.log(type);
+  var latlng=req.body.latlng;
+  console.log(latlng);
+  User.find({"type":type},function(err,user){
+    if(err) throw err;
+    if(user.length>0){
+      console.log(user);
+      axios.get("https://maps.googleapis.com/maps/api/geocode/json?latlng="+latlng+"&key=AIzaSyC4J4w5E2LA2QA3Ngtmv3iVwfAlpXx4v0E")
+      .then(function(response){
+    var full_address=response.data.results[3].formatted_address;
+console.log(full_address);
+    })
+      .catch(function(error){
+        console.log(error);
+      })
+    //  res.render("search_result",{title:type,search_result:user});
+    }
+    if(user.length==0)
+    {
+      res.render("search_result",{title:type,error:"Your Desired Worker Is Not Available Around You"});
+    }
+
+  })
+
+
+})
 module.exports=router;

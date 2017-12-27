@@ -44,7 +44,8 @@ router.post('/signup',uploads.single("picture"),function(req,res,next){
         req.checkBody('password',"Your Password Length Should be greater than 8 charachters").isLength({ min: 8 });
         req.checkBody("cpassword","Your Password Does not Match").equals(req.body.password);
         req.checkBody("description","Your Description field should be greater than 50 characters").isLength({min:30});
-
+        var full_address=address+","+city+","+country;
+        console.log(full_address);
 
   var errors=req.validationErrors();
   if(errors){
@@ -59,11 +60,12 @@ router.post('/signup',uploads.single("picture"),function(req,res,next){
        email:email,
        photo:profilephoto,
        address:address,
-       contactno:contact,
+       contactno:contactno,
        city:city,
        country:country,
        type:type,
-       description:description
+       description:description,
+       full_address:full_address
 
      });
      var checkemail=User.findOne({'email':newuser.email},function(err,user){

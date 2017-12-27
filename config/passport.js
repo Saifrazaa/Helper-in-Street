@@ -10,20 +10,30 @@ passport.deserializeUser(function(id, done) {
     done(err, user);
   });
 });
-passport.use("local.signin",new LocalStrategy(
-  function(username, password, done) {
+passport.use("local.signin",new LocalStrategy({
+  usernameField:"email",
+  passwordField:"password",
+  passReqToCallback:true
+},
+  function(req,email, password, done) {
 
-    User.findOne({ 'email': username }, function (err, user) {
-      if (err) { return done(err); }
-      if (!user) {
-        
-         return done(null, false);
+    User.findOne({ 'email': email }, function (err, user) {
+      if (err) {return done(err); }
+      if (!user)
+      {
+          console.log("User not found");
+        req.session.flash="User not found";
+
+         return done(null, false,{message:"User not found"});
        }
+
+
        if(!user.validPassword(password)){
-
-         return done(null,false,{message:"Invalid Password"})
+          console.log("Password do not match");
+          req.session.flash="Password do not match";
+         return done(null,false,{message:"Password not match"});
        }
-
+       
        return done(null,user);
 
 

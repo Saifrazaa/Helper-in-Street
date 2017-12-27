@@ -38,10 +38,16 @@ var userschemas=module.exports=new mongoose.Schema({
   },
   description:{
     type:String
+  },
+  full_address:{
+    type:String
   }
 });
 userschemas.methods.validPassword=function(password){
 return bcrypt.compareSync(password,this.password);
+}
+userschemas.methods.findaddress=function(full_address){
+  return full_address=full_address;
 }
 var User=module.exports=mongoose.model("User",userschemas);
 

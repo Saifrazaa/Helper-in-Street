@@ -37,93 +37,102 @@
 				</ul>
 			</nav>
 
-			<div class="fh5co-footer">
-				<p><small>&copy; copyright Worker in Street</span> <span>Owned By<a href="http://www.facebook.com/saifrazaaa" target="_blank"> Saif Raza</a> </span> </small></p>
-				<ul>
-					<li><a href="#"><i class="icon-facebook"></i></a></li>
-					<li><a href="#"><i class="icon-twitter"></i></a></li>
-					<li><a href="#"><i class="icon-instagram"></i></a></li>
-					<li><a href="#"><i class="icon-linkedin"></i></a></li>
-				</ul>
-			</div>
+
 
 		</aside>
 
 		<div id="fh5co-main">
 			<br>
-			<form>
+			<form method="post" action="/workers/search">
 					<br>
 
-					<div class="col-lg-7 col-md-4 col-sm-4"></div><div class="col-lg-4 col-md-4 col-sm-4"><input type="text" class="form-control"  placeholder="Search For The Worker" /></div><div class="col-lg-1 col-sm-3 col-md-3"><button type="Submit" class="btn btn-success" class="form-control" >Search <span class="glyphicon glyphicon-search"></span></button></div>
+					<div class="col-lg-7 col-md-4 col-sm-4"></div><div class="col-lg-4 col-md-4 col-sm-4">
+						<input type="text" class="form-control" name="search" placeholder="Search For The Worker" /></div>
+					<div><input type="hidden" name="latlng" value="" id="location"/></div>
+					<div class="col-lg-1 col-sm-3 col-md-3"><button type="Submit" class="btn btn-success" class="form-control" >Search <span class="glyphicon glyphicon-search"></span></button></div>
+			</form>
+		
+		<script>
+		function position(pos)
+		{
+			var lat=pos.coords.latitude;
+			var long=pos.coords.longitude;
+			var coords=lat+","+long;
+			var x=document.getElementById("location").setAttribute("value",coords);
 
+		}
+		if(navigator.geolocation)
+		{
+			navigator.geolocation.getCurrentPosition(position);
+		}
 
+		</script>
 
-		</form>
 			<br>
 			<br>
+
 			<div class="fh5co-gallery">
+<tr>
+	<a class="gallery-item col-lg-4" href="single.html">
+		<img src="/images/mechanics.jpg" alt="Free HTML5 Bootstrap Template by FreeHTML5.co">
+		<span class="overlay">
+			<h2>Mechanics</h2>
+			<span>Find local Mechanic</span>
+		</span>
+	</a>
+	<a class="gallery-item col-lg-4" href="single.html">
+		<img src="/images/hometutor.jpg" alt="Free HTML5 Bootstrap Template by FreeHTML5.co">
+		<span class="overlay">
+			<h2>Tutor</h2>
+			<span>Find The Best Tutor</span>
+		</span>
+	</a>
+	<a class="gallery-item col-lg-4" href="single.html">
+		<img src="/images/plumber.jpg" alt="Free HTML5 Bootstrap Template by FreeHTML5.co">
+		<span class="overlay">
+			<h2>Plumber</h2>
+			<span>Find The Best Plumber</span>
+		</span>
+	</a>
+</tr>
+	<a class="gallery-item" href="single.html">
+		<img src="/images/carpenter.jpg" alt="Free HTML5 Bootstrap Template by FreeHTML5.co">
+		<span class="overlay">
+			<h2>Carpenter</h2>
+			<span>Find Best Carpenter</span>
+		</span>
+	</a>
 
-				<a class="gallery-item" href="single.html">
-					<img src="/images/mechanics.jpg" alt="Free HTML5 Bootstrap Template by FreeHTML5.co">
-					<span class="overlay">
-						<h2>Mechanics</h2>
-						<span>Find local Mechanic</span>
-					</span>
-				</a>
-				<a class="gallery-item" href="single.html">
-					<img src="/images/hometutor.jpg" alt="Free HTML5 Bootstrap Template by FreeHTML5.co">
-					<span class="overlay">
-						<h2>Tutor</h2>
-						<span>Find The Best Tutor</span>
-					</span>
-				</a>
-				<a class="gallery-item" href="single.html">
-					<img src="/images/plumber.jpg" alt="Free HTML5 Bootstrap Template by FreeHTML5.co">
-					<span class="overlay">
-						<h2>Plumber</h2>
-						<span>Find The Best Plumber</span>
-					</span>
-				</a>
+	<a class="gallery-item" href="single.html">
+		<img src="/images/driver.jpg" alt="Free HTML5 Bootstrap Template by FreeHTML5.co">
+		<span class="overlay">
+			<h2>Driver</h2>
+			<span>Find the Best Driver</span>
+		</span>
+	</a>
+	<a class="gallery-item" href="single.html">
+		<img src="/images/electrician.jpg" alt="Free HTML5 Bootstrap Template by FreeHTML5.co">
+		<span class="overlay">
+			<h2>Electrician</h2>
+			<span>Find The Best Electrician</span>
+		</span>
+	</a>
 
-				<a class="gallery-item" href="single.html">
-					<img src="/images/carpenter.jpg" alt="Free HTML5 Bootstrap Template by FreeHTML5.co">
-					<span class="overlay">
-						<h2>Carpenter</h2>
-						<span>Find Best Carpenter</span>
-					</span>
-				</a>
-
-				<a class="gallery-item" href="single.html">
-					<img src="/images/driver.jpg" alt="Free HTML5 Bootstrap Template by FreeHTML5.co">
-					<span class="overlay">
-						<h2>Driver</h2>
-						<span>Find the Best Driver</span>
-					</span>
-				</a>
-				<a class="gallery-item" href="single.html">
-					<img src="/images/electrician.jpg" alt="Free HTML5 Bootstrap Template by FreeHTML5.co">
-					<span class="overlay">
-						<h2>Electrician</h2>
-						<span>Find The Best Electrician</span>
-					</span>
-				</a>
-
-				<a class="gallery-item" href="single.html">
-					<img src="/images/photographer.jpg" alt="Free HTML5 Bootstrap Template by FreeHTML5.co">
-					<span class="overlay">
-						<h2>Photographer</h2>
-						<span>Find The Best Photographer</span>
-					</span>
-				</a>
-				<a class="gallery-item" href="single.html">
-					<img src="/images/labours.jpg" style="height:225px" watermark="Labours" alt="Free HTML5 Bootstrap Template by FreeHTML5.co">
-					<span class="overlay">
-						<h2>Labours</h2>
-						<span>Find The Best Photographer</span>
-					</span>
-				</a>
-
-
+	<a class="gallery-item" href="single.html">
+		<img src="/images/photographer.jpg" alt="Free HTML5 Bootstrap Template by FreeHTML5.co">
+		<span class="overlay">
+			<h2>Photographer</h2>
+			<span>Find The Best Photographer</span>
+		</span>
+	</a>
+	<a class="gallery-item" href="single.html">
+		<img src="/images/labours.jpg" style="height:225px" watermark="Labours" alt="Free HTML5 Bootstrap Template by FreeHTML5.co">
+		<span class="overlay">
+			<h2>Labours</h2>
+			<span>Find The Best Photographer</span>
+		</span>
+	</a>
+</div>
 
 
 
@@ -255,5 +264,18 @@
 				</div>
 			</div>
 
-		</div>
+
+		<hr>
+
+		<center><div class="fh5co-footer">
+			<p class="col-lg-12 col-sm-6 col-md-6"><small>&copy; copyright Worker in Street</span> <span>Owned By<a href="http://www.facebook.com/saifrazaaa" target="_blank"> Saif Raza</a> </span> </small></p>
+			<table>
+			<td class="col-lg-2 col-sm-3 col-md-3"><a href="#"><i class="icon-facebook" style="font-size:25px"></i></a></td>
+			<td class="col-lg-2 col-sm-3 col-md-3"><a href="#"><i class="icon-twitter" style="font-size:25px"></i></a></td>
+			<td class="col-lg-2 col-sm-3 col-md-3"><a href="#"><i class="icon-instagram" style="font-size:25px"></i></a></td>
+			<td class="col-lg-2 col-sm-3 col-md-3"><a href="#"><i class="icon-linkedin" style="font-size:25px"></i></a></td>
+</table>
+		</div></center>
+		<hr>
+
 	</div>

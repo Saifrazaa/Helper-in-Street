@@ -17,21 +17,21 @@ function checkauthentication(req,res,next){
     next();
   }};
 router.get('/', checkauthentication,function(req, res, next) {
-  console.log(req.user);
-  console.log(req.isAuthenticated());
+
   res.render('index', { title: 'Worker In Street',Dashboard:req.session.dashboard,user:req.user });
 });
 router.get('/services',checkauthentication, function(req, res, next) {
-  res.render('services', { title: 'About Us', Dashboard:req.session.dashboard,user:req.user});
+  res.render('services', { title: 'Services', Dashboard:req.session.dashboard,user:req.user});
 });
 router.get('/registration',checkauthentication, function(req, res, next) {
   res.render('registration', { title: 'Sign Up ',saif:"saif raza",Dashboard:req.session.dashboard,user:req.user,emailexists:null });
-  req.session.errors=null;
+
 });
 
 router.get('/login',checkauthentication ,function(req, res, next) {
 
-  res.render('login', { title: 'Log in To Your Account ' ,Dashboard:req.session.dashboard,user:req.user});
+  res.render('login', { title: 'Log in To Your Account ' ,Dashboard:req.session.dashboard,user:req.user,flashmessage:req.session.flash});
+  req.session.flash=null;
 });
 router.get('/aboutus', checkauthentication,function(req, res, next) {
   res.render('about', { title: 'About Us' ,Dashboard:req.session.dashboard,user:req.user});
