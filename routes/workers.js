@@ -45,29 +45,32 @@ router.post("/login",passport.authenticate("local.signin",{successRedirect:"/",f
 router.post("/search",function(req,res){
   var type=req.body.search;
   console.log(type);
-  var latlng=req.body.latlng;
+var latlng=req.body.latlng;
+
   console.log(latlng);
-  User.find({"type":type},function(err,user){
-    if(err) throw err;
-    if(user.length>0){
-      console.log(user);
-      axios.get("https://maps.googleapis.com/maps/api/geocode/json?latlng="+latlng+"&key=AIzaSyC4J4w5E2LA2QA3Ngtmv3iVwfAlpXx4v0E")
+axios.get("https://maps.googleapis.com/maps/api/geocode/json?latlng="+latlng+"&key=AIzaSyC4J4w5E2LA2QA3Ngtmv3iVwfAlpXx4v0E")
       .then(function(response){
-    var full_address=response.data.results[3].formatted_address;
-console.log(full_address);
-    })
-      .catch(function(error){
+        var full_address=response.data.results[3].formatted_address;
+        console.log(full_address);
+        User.find({"full_address":full_address,"type":type},function(err,user){
+          if (err) throw err;
+          if(user.length>0)
+          {
+          res.render("search_result",{title:type,search_result:user});
+          }
+          if(user.length==0)
+          {
+            res.render("search_result",{title:type,error:"Your Desired Worker Is Not Available Around You"});
+          }
+
+        })
+
+}).catch(function(error){
         console.log(error);
       })
-    //  res.render("search_result",{title:type,search_result:user});
-    }
-    if(user.length==0)
-    {
-      res.render("search_result",{title:type,error:"Your Desired Worker Is Not Available Around You"});
-    }
+
+
 
   })
 
-
-})
 module.exports=router;

@@ -32,25 +32,38 @@
 
   </aside>
 
-<div id="fh5co-main">
-  {{#if error}}
-  <strong style="font-size:30px;text-align:center">{{error}}</strong>
-  {{/if}}
-<table class="table table-bordered table-striped" >
-{{#each search_result}}
-<td class="col-lg-12 col-sm-12 col-md-12">
-<img src="/uploads/{{photo}}" style="height:200px;width:200px" />
-<br>
-<strong>Username</strong><h4>{{username}}</h4>
-<strong>Email</strong><h4>{{email}}</h4>
-<strong>Contact No</strong><h4>{{contactno}}</h4>
-<strong>Address</strong><h4>{{full_address}}</h4>
-<strong>Type</strong><h4>{{type}}</h4>
-<strong>Description</strong><h5>{{description}}</h5>
-</td>
-{{/each}}
+<div id="fh5co-main" style="margin-top:57px">
+  <center><strong class="alert alert-warning" style="margin-top:20px;font-size:30px" >You are Here Right Now!!!!</strong></center>
+  <div class="col-lg-12 col-sm-6 col-md-6 " style="margin-top:20px" ><iframe id="map"  frameborder="0" style="border:0" src="" allowfullscreen></iframe></div>
 
-</tr>
-</table>
+  {{#if error}}
+  <center><strong style="font-size:30px;text-align:center;margin-top:50px" class="alert alert-danger">{{error}}</strong></center>
+  {{/if}}
+
+  <table class="table table-responsive table-bordered">
+
+{{#each search_result}}
+<hr class="my-4">
+
+
+  <div class="jumbotron" style="margin-left:10px">
+    <img src="/uploads/{{photo}}" style="height:200px;width:200px" class="img img-circle" />
+    <h1 class="display-2">{{username}}</h1>
+    <h2 class="display-2">{{type}}</h2>
+    <strong>Contact No :</strong><i class="display-4">{{contactno}}</i><br>
+    <hr>
+    <strong>Description :</strong><p class="lead">{{description}}</p>
+
+    <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+    <p class="lead">
+      <a class="btn btn-primary btn-lg" href="#" role="button">Check Full Profile</a>
+    </p>
   </div>
+
+<hr class="my-4" >
+{{/each}}
+</table>
+
+  </div>
+
 </div>

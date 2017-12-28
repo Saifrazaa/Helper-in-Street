@@ -47,11 +47,22 @@
 					<br>
 
 					<div class="col-lg-7 col-md-4 col-sm-4"></div><div class="col-lg-4 col-md-4 col-sm-4">
-						<input type="text" class="form-control" name="search" placeholder="Search For The Worker" /></div>
+						<select class="form-control" name="search">
+							<option name="Mechanic">Mechanic</option>
+							<option name="Carpenter">Carpenter</option>
+							<option name="Electrician" >Electrician</option>
+							<option name="Photographer">Photographer</option>
+							<option name="Tutor">Home Tutor</option>
+							<option name="Labour">Labour</option>
+							<option name="Plumber">Plumber</option>
+							<option name="Driver">Driver</option>
+
+						</select>
+						</div>
 					<div><input type="hidden" name="latlng" value="" id="location"/></div>
 					<div class="col-lg-1 col-sm-3 col-md-3"><button type="Submit" class="btn btn-success" class="form-control" >Search <span class="glyphicon glyphicon-search"></span></button></div>
 			</form>
-		
+
 		<script>
 		function position(pos)
 		{
