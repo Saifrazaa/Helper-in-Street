@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
-
 var passport=require("passport").LocalStrategy;
 var expressValidator=require("express-validator");
 var passport=require("passport");
+var axios=require("axios");
 var bodyparser=require("body-parser");
 var bcrypt=require("bcrypt");
 var User=require('../models/usermodel');
@@ -44,46 +44,56 @@ router.post('/signup',uploads.single("picture"),function(req,res,next){
         req.checkBody('password',"Your Password Length Should be greater than 8 charachters").isLength({ min: 8 });
         req.checkBody("cpassword","Your Password Does not Match").equals(req.body.password);
         req.checkBody("description","Your Description field should be greater than 50 characters").isLength({min:30});
-        var full_address=address+", "+city+", "+country;
-        console.log(full_address);
+        var correct_address=address+", "+city+", "+country;
+        var errors=req.validationErrors();
 
-  var errors=req.validationErrors();
+
   if(errors){
     res.render("registration",{title:"Registration",errors:errors,emailexists:req.session.emailexists});
   }
   else {
+    axios.get("https://maps.googleapis.com/maps/api/geocode/json?address="+correct_address+"&key=AIzaSyC4J4w5E2LA2QA3Ngtmv3iVwfAlpXx4v0E")
+    .then(function(response){
+      var full_address=response.data.results[0].formatted_address;
+      console.log(full_address);
 
-      //pass the user data to the User model
-      var newuser=new User({
-       username:username,
-       password:password,
-       email:email,
-       photo:profilephoto,
-       address:address,
-       contactno:contactno,
-       city:city,
-       country:country,
-       type:type,
-       description:description,
-       full_address:full_address
+    //pass the user data to the User model
+    var newuser=new User({
+     username:username,
+     password:password,
+     email:email,
+     photo:profilephoto,
+     address:address,
+     contactno:contactno,
+     city:city,
+     country:country,
+     type:type,
+     description:description,
+     full_address:full_address
+
+   });
+   var checkemail=User.findOne({'email':newuser.email},function(err,user){
+     if(user){
+       res.render("registration",{title:"Register Here",emailexists:"Email Address Already Exists"});
+     }
+     else {
+       var userregister=User.createuser(newuser,function(err,user){
+         if (err) throw err;
+         console.log("User Registered");
+         req.login(user,function(err){
+           if (err) throw err;
+           res.redirect("/");
+         })
 
      });
-     var checkemail=User.findOne({'email':newuser.email},function(err,user){
-       if(user){
-         res.render("registration",{title:"Register Here",emailexists:"Email Address Already Exists"});
-       }
-       else {
-         var userregister=User.createuser(newuser,function(err,user){
-           if (err) throw err;
-           console.log("User Registered");
-           req.login(user,function(err){
-             if (err) throw err;
-             res.redirect("/");
-           })
+     }
+   })
+    }).catch(function(error){
+      console.log(error);
+    });
 
-       });
-       }
-     })
+
+
 
 
 

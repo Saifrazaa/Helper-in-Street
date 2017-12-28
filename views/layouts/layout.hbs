@@ -97,6 +97,7 @@
 	<script src="/javascript/jquery.js"></script>
 
 	</body>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 	<script>
 	$(document).ready(function(){
 
@@ -107,7 +108,7 @@
 		var lati=pos.coords.latitude;
 		var longi=pos.coords.longitude;
 		var coords=lati+","+longi;
-
+		
     var x=document.getElementById("map").setAttribute('src','https://www.google.com/maps/embed/v1/place?key=AIzaSyDQ_YowBXrKttpiLOsY1w41ArSbXsjCcG4&q='+coords);
 		var y=document.getElementById("office").setAttribute('src','https://www.google.com/maps/embed/v1/place?key=AIzaSyDQ_YowBXrKttpiLOsY1w41ArSbXsjCcG4&q='+office);
 
