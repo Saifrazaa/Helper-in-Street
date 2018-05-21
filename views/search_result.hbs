@@ -1,28 +1,56 @@
 <div id="fh5co-page">
 
-  <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
+  <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle">
+    <i></i>
+  </a>
   <aside id="fh5co-aside" role="complementary" class="border">
 
-    <h1 id="fh5co-logo"><a href="/"><img src="/images/logo.jpg" style="width:200px;height:200px" alt="Worker In Street"></a></h1>
+    <h1 id="fh5co-logo">
+      <a href="/">
+        <img src="/images/logo.jpg" style="width:200px;height:200px" alt="Worker In Street">
+      </a>
+    </h1>
     <p style="color:green;margin-left:30px">Worker in Street</p>
     <nav id="fh5co-main-menu" role="navigation">
       <ul>
 
         {{#if Dashboard}}
-        <li ><a href="/" style="cursor:pointer">Home</a></li>
-        <li><a href="/services">Services</a></li>
-        <li><a href="/workers/dashboard">Dashboard</a></li>
-        <li class="fh5co-active"><a href="">About Us</a></li>
-        <li><a href="/contactus">Contact Us</a></li>
+        <li>
+          <a href="/" style="cursor:pointer">Home</a>
+        </li>
+        <li>
+          <a href="/services">Services</a>
+        </li>
+        <li>
+          <a href="/workers/dashboard">Dashboard</a>
+        </li>
+        <li class="fh5co-active">
+          <a href="">About Us</a>
+        </li>
+        <li>
+          <a href="/contactus">Contact Us</a>
+        </li>
         {{else}}
-        <li ><a href="/" style="cursor:pointer">Home</a></li>
+        <li>
+          <a href="/" style="cursor:pointer">Home</a>
+        </li>
 
-        <li><a href="/services">Services</a></li>
-        <li><a href="/registration">Registration</a></li>
-        <li><a href="/login">Login</a></li>
+        <li>
+          <a href="/services">Services</a>
+        </li>
+        <li>
+          <a href="/registration">Registration</a>
+        </li>
+        <li>
+          <a href="/login">Login</a>
+        </li>
 
-        <li class="fh5co-active"><a href="">About Us</a></li>
-        <li ><a href="/contactus">Contact Us</a></li>
+        <li class="fh5co-active">
+          <a href="">About Us</a>
+        </li>
+        <li>
+          <a href="/contactus">Contact Us</a>
+        </li>
         {{/if}}
 
 
@@ -32,37 +60,44 @@
 
   </aside>
 
-<div id="fh5co-main" style="margin-top:57px">
-  <center><strong class="alert alert-warning" style="margin-top:20px;font-size:30px" >You are Here Right Now!!!!</strong></center>
-  <div class="col-lg-12 col-sm-6 col-md-6 " style="margin-top:20px" ><iframe id="map"  frameborder="0" style="border:0" src="" allowfullscreen></iframe></div>
+  <div id="fh5co-main" style="margin-top:57px">
+    <center>
+      <strong class="alert alert-warning" style="margin-top:20px;font-size:30px">You are Here Right Now!!!!</strong>
+    </center>
+    <div class="col-lg-12 col-sm-6 col-md-6 " style="margin-top:20px">
+      <iframe id="map" frameborder="0" style="border:0" src="" allowfullscreen></iframe>
+    </div>
 
-  {{#if error}}
-  <center><strong style="font-size:30px;text-align:center;margin-top:50px" class="alert alert-danger">{{error}}</strong></center>
-  {{/if}}
+    {{#if error}}
+    <center>
+      <strong style="font-size:30px;text-align:center;margin-top:50px" class="alert alert-danger">{{error}}</strong>
+    </center>
+    {{/if}}
 
-  <table class="table table-responsive table-bordered">
+    <table class="table table-responsive table-bordered">
 
-{{#each search_result}}
-<hr class="my-4">
+      {{#each search_result}}
+      <hr class="my-4">
+      
+      <div class="jumbotron" style="margin-left:10px">
+        <img src="/uploads/{{photo}}" style="height:100px;width:100px" class="img img-circle" />
+        <h1 class="display-1">{{username}}</h1>
+        <h2 class="display-2">{{type}}</h2>
+        <strong>Contact No :</strong>
+        <i class="display-4">{{contactno}}</i>
+        <br>
+        <hr>
+        <strong>Description :</strong>
+        <p class="lead">{{description}}</p>
 
+        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+        <p class="lead">
+          <a class="btn btn-primary btn-lg" href="#" role="button">Check Full Profile</a>
+        </p>
+      </div>
 
-  <div class="jumbotron" style="margin-left:10px">
-    <img src="/uploads/{{photo}}" style="height:200px;width:200px" class="img img-circle" />
-    <h1 class="display-2">{{username}}</h1>
-    <h2 class="display-2">{{type}}</h2>
-    <strong>Contact No :</strong><i class="display-4">{{contactno}}</i><br>
-    <hr>
-    <strong>Description :</strong><p class="lead">{{description}}</p>
-
-    <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-    <p class="lead">
-      <a class="btn btn-primary btn-lg" href="#" role="button">Check Full Profile</a>
-    </p>
-  </div>
-
-<hr class="my-4" >
-{{/each}}
-</table>
+      <hr class="my-4"> {{/each}}
+    </table>
 
   </div>
 
