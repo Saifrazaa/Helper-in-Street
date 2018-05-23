@@ -1,0 +1,344 @@
+<link rel="stylesheets" href="/stylesheets/registerpage.css" />
+<div id="fh5co-page">
+
+	<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle">
+		<i></i>
+	</a>
+	<aside id="fh5co-aside" role="complementary" class="border">
+
+		<h1 id="fh5co-logo">
+			<a href="/">
+				<img src="/images/logo.jpg" style="width:200px;height:200px" alt="Worker In Street">
+			</a>
+		</h1>
+		<p style="color:green;margin-left:30px">Worker in Street</p>
+		<hr>
+		<nav id="fh5co-main-menu" role="navigation">
+			<ul>
+
+				{{#if Dashboard}}
+				<h4 class="text text-success">{{user.username}}</h4>
+				<li>
+					<a href="/" style="cursor:pointer">Home</a>
+				</li>
+				<li>
+					<a href="/services">Services</a>
+				</li>
+				<li>
+					<a href="/workers/dashboard">Dashboard</a>
+				</li>
+				<li>
+					<a href="/aboutus">About Us</a>
+				</li>
+				<li>
+					<a href="/contactus">Contact Us</a>
+				</li>
+				{{else}}
+				<li>
+					<a href="/" style="cursor:pointer">Home</a>
+				</li>
+
+				<li>
+					<a href="/services">Services</a>
+				</li>
+				<li class="fh5co-active">
+					<a href="">Registration</a>
+				</li>
+				<li>
+					<a href="/login">Login</a>
+				</li>
+
+				<li>
+					<a href="/aboutus">About Us</a>
+				</li>
+				<li>
+					<a href="/contactus">Contact Us</a>
+				</li>
+				{{/if}}
+
+
+			</ul>
+		</nav>
+
+
+
+	</aside>
+
+	<div id="fh5co-main">
+
+
+		<div class="container-fluid" class="container">
+			<div class="container">
+				<table class="table table-responsive table-hover table-striped">
+					<div class="fh5co-narrow-content">
+						<h1>Please Sign Up To get Start</h1>
+
+					</div>
+					<div class="row">
+						<div class="col-md-8">
+
+
+							<hr> {{#if errors }}
+							<ul class="alert alert-danger">
+								{{# each errors}}
+
+								<li> {{this.msg}}</li>
+
+								{{/each}}
+							</ul>
+							{{/if}}
+
+
+							<form class="form-horizontal" method="post" action="/users/signup" enctype="multipart/form-data">
+								<tr>
+									<td>
+										<div class="form-group">
+											<label class="control-label col-sm-3">Email ID
+												<span class="text-danger">*</span>
+											</label>
+											<div class="col-md-8 col-sm-9">
+												<div class="input-group">
+													<span class="input-group-addon">
+														<i class="glyphicon glyphicon-envelope"></i>
+													</span>
+													<input type="email" value="someone@example.com" required class="form-control" name="email" placeholder="Enter your Email ID">
+												</div>
+
+												<small> Your Email Id is being used for ensuring the security of your account, authorization and access recovery. </small>
+											</div>
+
+										</div>
+									</td>
+									{{#if emailexists}}
+									<ul class="alert alert-danger">
+										<li>{{emailexists}}</li>
+									</ul>
+									{{/if}}</tr>
+
+
+								<tr>
+									<td>
+										<div class="form-group">
+											<label class="control-label col-sm-3">Set Password
+												<span class="text-danger">*</span>
+											</label>
+											<div class="col-md-5 col-sm-8">
+												<div class="input-group">
+													<span class="input-group-addon">
+														<i class="glyphicon glyphicon-lock"></i>
+													</span>
+													<input type="password" value="12345678" required class="form-control" name="password" placeholder="Choose password (5-15 chars)">
+												</div>
+											</div>
+										</div>
+									</td>
+								</tr>
+								<input type="hidden" name="latlong" id="latlong" value=""/>
+								<tr>
+ 									<td>
+										<div class="form-group">
+											<label class="control-label col-sm-3">Confirm Password
+												<span class="text-danger">*</span>
+											</label>
+											<div class="col-md-5 col-sm-8">
+												<div class="input-group">
+													<span class="input-group-addon">
+														<i class="glyphicon glyphicon-lock"></i>
+													</span>
+													<input type="password" value="12345678" required class="form-control" name="cpassword" placeholder="Confirm your password">
+												</div>
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<div class="form-group">
+											<label class="control-label col-sm-3">Full Name
+												<span class="text-danger">*</span>
+											</label>
+											<div class="col-md-8 col-sm-9">
+												<input type="text" class="form-control" required value="Saif Raza" name="username" placeholder="Enter your Name here">
+											</div>
+										</div>
+									</td>
+								</tr>
+
+
+								<tr>
+									<td>
+										<div class="form-group">
+											<label class="control-label col-sm-3">Contact No.
+												<span class="text-danger">*</span>
+											</label>
+											<div class="col-md-5 col-sm-8">
+												<div class="input-group">
+													<span class="input-group-addon">
+														<i class="glyphicon glyphicon-phone"></i>
+													</span>
+													<input type="text" class="form-control" required value="03087256653" name="contactno" placeholder="Enter your Primary contact no.">
+												</div>
+											</div>
+										</div>
+									</td>
+								</tr>
+
+
+								<tr>
+									<td>
+										<div class="form-group">
+											<label class="control-label col-sm-3">Profile Photo
+												<br>
+												<small>(File should be jpg or png)</small>
+											</label>
+											<div class="col-md-5 col-sm-8">
+												<input type="file" class="form-control" required name="picture" placeholder="Any other or Landline no (if any)">
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<div class="form-group">
+											<label class="control-label col-sm-3">What is Your Role?
+												<br>
+											</label>
+											<div class="col-md-5 col-sm-8">
+												<select style="cursor:pointer" class="form-control glyphicon glyphicon-random" required name="type">
+													<option name="mechanic">Mechanic</option>
+													<option name="electrician">Electrician</option>
+													<option name="plumber">Plumber</option>
+													<option name="photographer">Photographer</option>
+													<option name="carpenter">Carpenter</option>
+													<option name="driver">Driver</option>
+													<option name="tutor">Home Tutor</option>
+													<option name="labour">Labour</option>
+												</select>
+											</div>
+
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<div class="form-group">
+											<label class="control-label col-sm-3">Address
+												<br>
+												<small>(Just colony Name)</small>
+											</label>
+											<div class="col-md-5 col-sm-8">
+												<input type="text" class="form-control" required name="address" id="contactnum2" placeholder="Just Write Your Colony Name"
+												 value="karachi">
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<div class="form-group">
+											<label class="control-label col-sm-3">City
+												<br>
+											</label>
+											<div class="col-md-5 col-sm-8">
+												<input type="text" class="form-control" required name="city" placeholder="City" value="karachi">
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<div class="form-group">
+											<label class="control-label col-sm-3">Country
+												<br>
+											</label>
+											<div class="col-md-5 col-sm-8">
+												<input type="text" class="form-control" required name="country" placeholder="Country" value="pakistan">
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<div class="form-group">
+											<label class="control-label col-sm-3">Write Down You Experience
+												<br>
+											</label>
+											<div class="col-md-5 col-sm-8">
+												<textarea class="form-control" rows="7" placeholder="e.g your company experience or your qualification and your biography"
+												 name="description"></textarea>
+											</div>
+										</div>
+									</td>
+								</tr>
+
+
+								<tr>
+									<td>
+										<div class="form-group">
+											<div class="col-xs-offset-3 col-md-8 col-sm-9">
+												<span class="text-muted">
+													<span class="label label-danger">Note:-</span> By clicking Sign Up, you agree to our
+													<a href="#">Terms</a> and that you have read our
+													<a href="#">Policy</a>, including our
+													<a href="#">Cookie Use</a>.</span>
+											</div>
+										</div>
+										<tr>
+											<td>
+												<div class="form-group">
+													<div class="col-xs-offset-3 col-xs-10">
+														<input name="Submit" type="submit" value="Sign Up" class="btn btn-primary">
+													</div>
+												</div>
+												<td>
+										</tr>
+							</form>
+
+
+						</div>
+					</div>
+			</div>
+
+
+
+
+			</table>
+
+		</div>
+	</div>
+	<hr>
+	<center>
+		<div class="fh5co-footer">
+			<p class="col-lg-12 col-sm-6 col-md-6">
+				<small>&copy; copyright Worker in Street</span>
+					<span>Owned By
+						<a href="http://www.facebook.com/saifrazaaa" target="_blank"> Saif Raza</a>
+					</span>
+				</small>
+			</p>
+			<table>
+				<td class="col-lg-2 col-sm-3 col-md-3">
+					<a href="#">
+						<i class="icon-facebook" style="font-size:25px"></i>
+					</a>
+				</td>
+				<td class="col-lg-2 col-sm-3 col-md-3">
+					<a href="#">
+						<i class="icon-twitter" style="font-size:25px"></i>
+					</a>
+				</td>
+				<td class="col-lg-2 col-sm-3 col-md-3">
+					<a href="#">
+						<i class="icon-instagram" style="font-size:25px"></i>
+					</a>
+				</td>
+				<td class="col-lg-2 col-sm-3 col-md-3">
+					<a href="#">
+						<i class="icon-linkedin" style="font-size:25px"></i>
+					</a>
+				</td>
+			</table>
+		</div>
+	</center>
+	<hr>
+</div>

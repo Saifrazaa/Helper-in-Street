@@ -1,0 +1,35 @@
+<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
+<aside id="fh5co-aside" role="complementary" class="border js-fullheight">
+
+
+
+  <nav id="fh5co-main-menu" role="navigation">
+    <p style="color:green;margin-left:30px">Worker in Street</p>
+    {{#if user}}
+    <img src="/uploads/{{user.photo}}" class="img-responsive img-circle" style="height:200px;width:200px" alt="Cinque Terre">
+    <br>
+    <h3 class="col-lg-12 col-sm-6 text text-success" >  &nbsp; {{user.username}}</h3>
+    <h4 class="col-lg-12 col-sm-6 text text-info" >You are [{{user.type}}]</h4>
+
+    <ul>
+
+
+      <li><a href="/workers/edit_profile">Edit Profile</a></li>
+      <li><a href="/workers/history">History</a></li>
+      <li class="fh5co-active"><a href="/workers/your_current_location">Current Location</a></li>
+      <li><a href="">{{user.country}}</a></li>
+      <li><a href="/">Go To Site</a></li>
+      <li><a href="/contactus">Contact Us</a></li>
+      <li><a href="/workers/logout" >Logout</a></li>
+
+
+{{/if}}
+    </ul>
+  </nav>
+
+
+
+</aside>
+<div id="fh5co-main">
+<div class="col-lg-12 col-sm-6 col-md-6 "><iframe id="map"  frameborder="0" style="border:0" src="" allowfullscreen></iframe></div>
+</div>
