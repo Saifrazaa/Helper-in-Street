@@ -42,8 +42,8 @@ router.post("/book", (req, res, next) => {
   var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'fa15bs0042@maju.edu.pk',
-      pass: '@AUV33HP'
+      user: '',
+      pass: ''
     }
   });
   var mailOptions = {
